@@ -2,19 +2,37 @@
 # Configuration of the prompt
 #
 
+green="\[\033[0;32m\]"
+boldgreen="\[\033[1;32m\]"
+yellow="\[\033[0;33m\]"
+cyan="\[\033[0;36m\]"
+boldcyan="\[\033[1;36m\]"
+nocolor="\[\033[0m\]"
+
 git_branch_name() {
-    branch_name=$(git symbolic-ref -q --short HEAD 2>/dev/null)
+    local branch_name=$(git symbolic-ref -q --short HEAD 2>/dev/null)
 
     # check if we are in detached HEAD state
     if [ -z "$branch_name" ]; then
-        short_rev=$(git rev-parse --short HEAD 2>/dev/null)
+        local short_rev=$(git rev-parse --short HEAD 2>/dev/null)
         if [ -n "$short_rev" ]; then
             branch_name="HEAD-$short_rev"
         fi
     fi
 
     if [ -n "$branch_name" ]; then
-        echo " [$branch_name]"
+        local changed_files=$(git diff --name-status | grep -v ^U | wc -l) # ignoring unmerged entries
+        local delta="Δ"
+
+        local info_string=" ($branch_name"
+
+        if [ "$changed_files" -ne "0" ]; then
+            info_string="$info_string|$delta $changed_files"
+        fi
+
+        info_string="$info_string)"
+
+        echo "$info_string"
     fi
 }
 
@@ -45,9 +63,9 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1="${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$(git_branch_name)\n\$ "
+    PS1="${debian_chroot:+($debian_chroot)}${boldgreen}\u${nocolor}: ${cyan}\w${yellow}\$(git_branch_name)${nocolor}\n\$ "
 else
-    PS1="${debian_chroot:+($debian_chroot)}\u@\h:\w\$(git_branch_name)\n\$ "
+    PS1="${debian_chroot:+($debian_chroot)}\u: \w\$(git_branch_name)\n\$ "
 fi
 unset color_prompt force_color_prompt
 
@@ -59,3 +77,5 @@ xterm*|rxvt*)
 *)
     ;;
 esac
+
+unset green boldgreen yellow cyan boldcyan nocolor
