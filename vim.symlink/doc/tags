@@ -90,7 +90,7 @@ b:match_word	matchit.txt	/*b:match_word*
 b:match_words	matchit.txt	/*b:match_words*
 clj-nailgun-server	clojure.txt	/*clj-nailgun-server*
 clojure.vim	clojure.txt	/*clojure.vim*
-config/rails.vim	rails.txt	/*config\/rails.vim*
+config/rails.vim	rails.txt	/*config/rails.vim*
 eb	clojure.txt	/*eb*
 ef	clojure.txt	/*ef*
 el	clojure.txt	/*el*
@@ -111,7 +111,7 @@ jw	clojure.txt	/*jw*
 li	clojure.txt	/*li*
 lw	clojure.txt	/*lw*
 m1	clojure.txt	/*m1*
-macros/rails.vim	rails.txt	/*macros\/rails.vim*
+macros/rails.vim	rails.txt	/*macros/rails.vim*
 matchit	matchit.txt	/*matchit*
 matchit-%	matchit.txt	/*matchit-%*
 matchit-\1	matchit.txt	/*matchit-\\1*
@@ -252,7 +252,7 @@ rails-alternate	rails.txt	/*rails-alternate*
 rails-alternate-related	rails.txt	/*rails-alternate-related*
 rails-autocommands	rails.txt	/*rails-autocommands*
 rails-commands	rails.txt	/*rails-commands*
-rails-config/projections.json	rails.txt	/*rails-config\/projections.json*
+rails-config/projections.json	rails.txt	/*rails-config/projections.json*
 rails-configuration	rails.txt	/*rails-configuration*
 rails-dbext	rails.txt	/*rails-dbext*
 rails-gf	rails.txt	/*rails-gf*
