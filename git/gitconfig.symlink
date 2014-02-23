@@ -1,0 +1,14 @@
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[alias]
+	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+	today = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short --since='1 day ago'
+	ch-files = diff --name-status
+[core]
+	autocrlf = input
+[push]
+	default = simple
+[include]
+    path = ~/.gitconfig-user
