@@ -1,0 +1,49 @@
+#!/bin/bash
+#
+# Script to be executed in post-commit hook.
+# Takes photo from default video camera and annotates it with commit summary,
+# commit hash, commit time and project name. Photo taking runs in background.
+#
+# Installation:
+#   1. Symlink this file to <your_git_repo>/hooks/gitshots.sh
+#   2. Create file <your_git_repo>/hooks/post-commit
+#   3. Add "$GIT_DIR/hooks/gitshots.sh" to this file
+# 
+# Requires:
+#  * fswebcam - application to take photo from webcam
+#
+
+echo "Started GITSHOTS"
+
+gitshots_path="${HOME}/.gitshots"
+gitshots_log="gitshots.log"
+
+last_commit=$(git log -1 HEAD --format=oneline)
+commit_hash=$(echo "$last_commit" | cut -d ' ' -f 1)
+commit_msg=$(echo "$last_commit" | cut -d ' ' -f 2-)
+project_path=$(git rev-parse --show-toplevel)
+project_name=$(basename "$project_path")
+
+now=$(date +"%Y%m%d_%H%M%S")
+now_year_month=$(date +"%Y_%m")
+
+shot_name="${now}_${project_name}.jpg"
+shot_dir="$gitshots_path/$now_year_month"
+
+# create directory with all parent directories if they not exist
+mkdir -p "$shot_dir"
+
+fswebcam \
+   -S 50 \
+   -D 1 \
+   -r 640x480 \
+   --jpeg 95 \
+   --banner-colour "#40232323" \
+   --line-colour "#00000000" \
+   --background \
+   --log "$shot_dir/$gitshots_log" \
+   --title "$commit_msg" \
+   --subtitle "$commit_hash" \
+   --info "$project_name" \
+   "$shot_dir/$shot_name"
+
