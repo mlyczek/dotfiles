@@ -1,0 +1,9 @@
+" Global customizations
+
+set guifont=DejaVu\ Sans\ Mono\ 9
+colorscheme wombat
+
+set lines=40 columns=140
+
+set vb t_vb=
+

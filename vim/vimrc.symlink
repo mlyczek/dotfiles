@@ -1,0 +1,51 @@
+execute pathogen#infect()
+
+" Vim5 and later versions support syntax highlighting. Uncommenting the next
+" line enables syntax highlighting by default.
+syntax on
+
+" If using a dark background within the editing area and syntax highlighting
+" turn on this option as well
+set background=dark
+
+" Uncomment the following to have Vim load indentation rules and plugins
+" according to the detected filetype.
+if has("autocmd")
+  filetype plugin indent on
+endif
+
+" The following are commented out as they cause vim to behave a lot
+" differently from regular Vi. They are highly recommended though.
+"set showcmd		" Show (partial) command in status line.
+set showmatch		" Show matching brackets.
+"set ignorecase		" Do case insensitive matching
+"set smartcase		" Do smart case matching
+set incsearch		" Incremental search
+"set autowrite		" Automatically save before commands like :next and :make
+"set hidden             " Hide buffers when they are abandoned
+"set mouse=a		" Enable mouse usage (all modes)
+set smartindent		" Use smart indentation rules
+set tabstop=4		" Tabulator zajmuje 4 kolumny
+set shiftwidth=4	" Przesunięcie o 4 kolumny
+set expandtab       " Zamienia tabulator na spacje
+set number		" Włącza numery linii
+
+let vimclojure#HighlightBuiltins = 1
+let vimclojure#ParenRainbow = 1
+
+" Local settings for ruby
+autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
+
+" Local settings for latex
+set grepprg=grep\ -nH\ $*
+let g:tex_flavor='latex'
+let g:Tex_DefaultTargetFormat='pdf'
+
+" Disable beeps in gvim and flashing of screen
+set noeb vb t_vb=
+
+" Switch on search pattern highlighting. 
+set hlsearch
+
+" Search for 'tags' file in current directory and up
+set tags=./tags,tags;$HOME
