@@ -1,7 +1,9 @@
 " Global customizations
 
 set guifont=DejaVu\ Sans\ Mono\ 9
-colorscheme wombat
+colorscheme base16-tomorrow
+" colorscheme base16-tomorrow, hybrid, base16-monokai, zenburn, jellybeans,
+" base16-railscast
 
 set lines=40 columns=140
 
