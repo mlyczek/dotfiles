@@ -30,6 +30,12 @@ set shiftwidth=4	" Przesunięcie o 4 kolumny
 set expandtab       " Zamienia tabulator na spacje
 set number		" Włącza numery linii
 
+" Settings for vim-airline
+set laststatus=2
+let g:airline_powerline_fonts = 1
+let g:airline_enable_branch = 1
+
+" Local settings for Clojure
 let vimclojure#HighlightBuiltins = 1
 let vimclojure#ParenRainbow = 1
 
@@ -44,7 +50,7 @@ let g:Tex_DefaultTargetFormat='pdf'
 " Disable beeps in gvim and flashing of screen
 set noeb vb t_vb=
 
-" Switch on search pattern highlighting. 
+" Switch on search pattern highlighting
 set hlsearch
 
 " Search for 'tags' file in current directory and up
