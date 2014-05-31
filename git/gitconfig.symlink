@@ -11,5 +11,9 @@
 	autocrlf = input
 [push]
 	default = simple
+[diff]
+    tool = kdiff3
+[merge]
+    tool = kdiff3
 [include]
     path = ~/.gitconfig-user
