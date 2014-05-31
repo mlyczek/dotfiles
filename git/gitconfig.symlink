@@ -13,6 +13,8 @@
 	default = simple
 [diff]
     tool = kdiff3
+[difftool]
+	prompt = false
 [merge]
     tool = kdiff3
 [include]
