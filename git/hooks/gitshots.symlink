@@ -34,8 +34,8 @@ shot_dir="$gitshots_path/$now_year_month"
 mkdir -p "$shot_dir"
 
 fswebcam \
-   -S 50 \
-   -D 1 \
+   -S 90 \
+   -D 2 \
    -r 640x480 \
    --jpeg 95 \
    --banner-colour "#40232323" \
