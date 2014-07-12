@@ -30,6 +30,10 @@ set shiftwidth=4	" Przesunięcie o 4 kolumny
 set expandtab       " Zamienia tabulator na spacje
 set number		" Włącza numery linii
 
+" Show some whitespace characters
+set list
+set listchars=tab:»-,trail:·
+
 " Settings for vim-airline
 set laststatus=2
 let g:airline_powerline_fonts = 1
