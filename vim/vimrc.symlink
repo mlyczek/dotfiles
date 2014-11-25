@@ -21,6 +21,7 @@ set showmatch		" Show matching brackets.
 "set ignorecase		" Do case insensitive matching
 "set smartcase		" Do smart case matching
 set incsearch		" Incremental search
+set hlsearch        " Switch on search pattern highlighting
 "set autowrite		" Automatically save before commands like :next and :make
 "set hidden             " Hide buffers when they are abandoned
 "set mouse=a		" Enable mouse usage (all modes)
@@ -39,6 +40,13 @@ set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline_enable_branch = 1
 
+" Settings for Unite
+call unite#custom#profile('default', 'context', {
+            \    'start_insert': 1
+            \})
+
+nnoremap <C-p> :<C-u>Unite -no-split -no-resize -buffer-name=files file_rec<cr>
+
 " Local settings for Clojure
 let vimclojure#HighlightBuiltins = 1
 let vimclojure#ParenRainbow = 1
@@ -54,9 +62,6 @@ let g:Tex_AutoFolding = 0
 
 " Disable beeps in gvim and flashing of screen
 set noeb vb t_vb=
-
-" Switch on search pattern highlighting
-set hlsearch
 
 " Search for 'tags' file in current directory and up
 set tags=./tags,tags;$HOME
