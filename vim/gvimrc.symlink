@@ -1,7 +1,7 @@
 " Global customizations
 
 set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 9
-colorscheme base16-tomorrow
+colorscheme solarized
 " colorscheme base16-tomorrow, hybrid, base16-monokai, zenburn, jellybeans,
 " base16-railscast
 
