@@ -43,6 +43,9 @@ set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline_enable_branch = 1
 
+" Settings for NERDTree
+nnoremap <F5> :NERDTreeToggle<CR>
+
 " Settings for Unite
 call unite#custom#profile('default', 'context', {
             \    'start_insert': 1
