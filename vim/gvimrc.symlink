@@ -5,6 +5,8 @@ colorscheme solarized
 " colorscheme base16-tomorrow, hybrid, base16-monokai, zenburn, jellybeans,
 " base16-railscast
 
+set guioptions-=T  " remove toolbar
+
 set lines=40 columns=140
 
 set vb t_vb=
