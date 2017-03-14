@@ -9,10 +9,11 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'morhetz/gruvbox'
 Plug 'lifepillar/vim-solarized8'
-Plug 'kien/rainbow_parentheses.vim'
+Plug 'luochen1990/rainbow'
 Plug 'neomake/neomake'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'jiangmiao/auto-pairs'
 
 call plug#end()
 
@@ -40,9 +41,15 @@ let g:airline#extensions#tabline#enabled = 1
 let g:neomake_open_list = 2
 autocmd! BufWritePost *.js Neomake
 
+" Rainbow parentheses
+let g:rainbow_active = 1
+
 " Usefull mappings
 vnoremap <leader>y "+y
 nnoremap <leader><space> :noh<CR>
 
 " NERDTree
 nnoremap <F5> :NERDTreeToggle<CR>
+
+" FZF
+nnoremap <leader>fe :Files<CR>
