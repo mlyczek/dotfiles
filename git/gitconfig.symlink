@@ -2,6 +2,7 @@
 	diff = auto
 	status = auto
 	branch = auto
+	ui = true
 [alias]
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 	today = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short --since='1 day ago'
@@ -9,6 +10,7 @@
 	ch-files = diff --name-status
 [core]
 	autocrlf = input
+	pager = diff-so-fancy | less --tabs=4 -RFX --pattern '^(Date|added|deleted|modified): '
 [push]
 	default = simple
 [diff]
@@ -19,3 +21,15 @@
     tool = kdiff3
 [include]
     path = ~/.gitconfig-user
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	meta = 227
+	frag = magenta bold
+	commit = 227 bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
