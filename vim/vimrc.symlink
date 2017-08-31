@@ -48,14 +48,7 @@ let g:airline#extensions#tabline#enabled = 1
 nnoremap <F5> :NERDTreeToggle<CR>
 
 " Settings for Ack
-nnoremap <leader>a :Ack 
-
-" Settings for Unite
-call unite#custom#profile('default', 'context', {
-            \    'start_insert': 1
-            \})
-
-nnoremap <C-p> :<C-u>Unite -no-split -no-resize -buffer-name=files file_rec<cr>
+nnoremap <leader>a :Ack
 
 " Settings for Syntastic
 set statusline+=%#warningmsg#
