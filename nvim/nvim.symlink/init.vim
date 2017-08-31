@@ -14,6 +14,9 @@ Plug 'neomake/neomake'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'jiangmiao/auto-pairs'
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'mxw/vim-jsx', { 'for': 'javascript' }
+Plug 'LaTeX-Box-Team/LaTeX-Box'
 
 call plug#end()
 
@@ -24,6 +27,7 @@ colorscheme gruvbox
 set number
 set relativenumber
 set list
+set cursorline
 set expandtab       " Use spaces instead of tab
 set tabstop=4       " Number of spaces to render a tab
 set softtabstop=4
@@ -43,6 +47,8 @@ autocmd! BufWritePost *.js Neomake
 
 " Rainbow parentheses
 let g:rainbow_active = 1
+
+set noeb vb t_vb=
 
 " Usefull mappings
 vnoremap <leader>y "+y
