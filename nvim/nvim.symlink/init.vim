@@ -17,6 +17,10 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'mxw/vim-jsx', { 'for': 'javascript' }
 Plug 'LaTeX-Box-Team/LaTeX-Box'
+Plug 'guns/vim-sexp'
+Plug 'mhinz/vim-startify'
+Plug 'ryanoasis/vim-devicons'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 call plug#end()
 
@@ -44,6 +48,9 @@ let g:airline#extensions#tabline#enabled = 1
 " Neomake
 let g:neomake_open_list = 2
 autocmd! BufWritePost *.js Neomake
+
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
 
 " Rainbow parentheses
 let g:rainbow_active = 1
