@@ -20,6 +20,8 @@ Plug 'LaTeX-Box-Team/LaTeX-Box'
 Plug 'guns/vim-sexp'
 Plug 'mhinz/vim-startify'
 Plug 'ryanoasis/vim-devicons'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 call plug#end()
@@ -52,13 +54,23 @@ autocmd! BufWritePost *.js Neomake
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
 
+" Ultisnips
+let g:UltiSnipsSnippetsDir = "~/.dotfiles/nvim/nvim.symlink/UltiSnips"
+let g:UltiSnipsEditSplit = "horizontal"
+
 " Rainbow parentheses
 let g:rainbow_active = 1
+
+" LaTeX-Box
+let g:LatexBox_Folding = 1
 
 set noeb vb t_vb=
 
 " Usefull mappings
 vnoremap <leader>y "+y
+vnoremap <leader>p "+p
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
 nnoremap <leader><space> :noh<CR>
 
 " NERDTree
