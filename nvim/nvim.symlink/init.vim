@@ -78,3 +78,6 @@ nnoremap <F5> :NERDTreeToggle<CR>
 
 " FZF
 nnoremap <leader>fe :Files<CR>
+
+" diff
+nnoremap <leader>q :qa<CR>

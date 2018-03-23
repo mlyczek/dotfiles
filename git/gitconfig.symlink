@@ -16,6 +16,8 @@
     tool = kdiff3
 [difftool]
 	prompt = false
+[difftool "nvimdiff"]
+    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 [merge]
     tool = kdiff3
 [include]
