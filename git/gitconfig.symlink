@@ -13,7 +13,7 @@
 [push]
 	default = simple
 [diff]
-    tool = kdiff3
+    tool = nvimdiff
 [difftool]
 	prompt = false
 [difftool "nvimdiff"]
