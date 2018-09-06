@@ -73,6 +73,12 @@ nnoremap <leader>p "+p
 nnoremap <leader>P "+P
 nnoremap <leader><space> :noh<CR>
 
+" Better split navigation
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
 " NERDTree
 nnoremap <F5> :NERDTreeToggle<CR>
 
