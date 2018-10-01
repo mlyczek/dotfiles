@@ -1,3 +1,5 @@
 $pdf_mode = 1;
 $pdf_previewer = 'start okular %O %S';
+$pdflatex = 'pdflatex %O %S; cp %Z%B.pdf %Z/..';
+
 $out_dir = 'out';
