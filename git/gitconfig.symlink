@@ -10,6 +10,7 @@
 	ch-files = diff --name-status
 [core]
 	autocrlf = input
+	editor = nvim
 [push]
 	default = simple
 [diff]
