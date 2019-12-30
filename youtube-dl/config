@@ -1,0 +1,3 @@
+
+# save always to youtube directory
+-o ~/Wideo/youtube/%(title)s.%(ext)s
