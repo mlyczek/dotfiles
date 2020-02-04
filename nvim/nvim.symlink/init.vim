@@ -224,6 +224,9 @@ let g:coc_global_extensions = ['coc-json', 'coc-css', 'coc-python']
 " don't give |ins-completion-menu| messages.
 set shortmess+=c
 
+" You will have bad experience for diagnostic messages when it's default 4000.
+set updatetime=300
+
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
 inoremap <silent><expr> <TAB>
@@ -253,6 +256,9 @@ endfunction
 
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
+
+nmap <silent> <C-B> <Plug>(coc-definition)
+nmap <silent> <M-F7> <Plug>(coc-references)
 
 
 """""""" Colorscheme """"""""
