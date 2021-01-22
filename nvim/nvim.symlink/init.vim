@@ -167,13 +167,11 @@ Plug 'honza/vim-snippets'
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+Plug 'pearofducks/ansible-vim'
+
 " Clojure
-Plug 'clojure-vim/acid.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Vigemus/impromptu.nvim'
-Plug 'clojure-vim/jazz.nvim'
-Plug 'tpope/vim-fireplace'
-Plug 'clojure-vim/async-clj-omni'
 Plug 'luochen1990/rainbow'
+Plug 'Olical/conjure', {'tag': 'v4.3.1'}
 
 call plug#end()
 
@@ -219,7 +217,7 @@ nnoremap <leader>fe :Files<CR>
 let g:python_highlight_all = 1
 
 """"""""""""""""""""""""""""""""""" COC """""""""""""""""""""""""""""""""""
-let g:coc_global_extensions = ['coc-json', 'coc-css', 'coc-python']
+let g:coc_global_extensions = ['coc-json', 'coc-css', 'coc-python', 'coc-phpls']
 
 " don't give |ins-completion-menu| messages.
 set shortmess+=c
@@ -257,7 +255,7 @@ endfunction
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-nmap <silent> <C-B> <Plug>(coc-definition)
+nmap <silent> <C-b> <Plug>(coc-definition)
 nmap <silent> <M-F7> <Plug>(coc-references)
 
 
