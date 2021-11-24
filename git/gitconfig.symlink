@@ -8,6 +8,7 @@
 	today = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short --since='1 day ago'
 	mylog = log --pretty=format:\"%C(auto)%h%Creset %ad | %C(cyan)%s%C(auto)%d%Creset [%an]\" --date=short
 	ch-files = diff --name-status
+    last = mylog -10
 [core]
 	autocrlf = input
 	editor = nvim
@@ -15,12 +16,19 @@
 	default = simple
 [diff]
     tool = nvimdiff
+    compactionHeuristic = true
 [difftool]
 	prompt = false
 [difftool "nvimdiff"]
     cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 [merge]
-    tool = kdiff3
+    tool = vimdiff3
+    conflictstyle = diff3
+[mergetool]
+    prompt = true
+	keepBackup = false
+[mergetool "vimdiff3"]
+    path = nvim
 [include]
     path = ~/.gitconfig-user
 [color "diff-highlight"]
@@ -35,3 +43,5 @@
 	old = red bold
 	new = green bold
 	whitespace = red reverse
+[pull]
+	rebase = false
