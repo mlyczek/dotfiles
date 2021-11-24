@@ -171,7 +171,7 @@ Plug 'pearofducks/ansible-vim'
 
 " Clojure
 Plug 'luochen1990/rainbow'
-Plug 'Olical/conjure', {'tag': 'v4.3.1'}
+Plug 'Olical/conjure', {'tag': 'v4.21.0'}
 
 call plug#end()
 
