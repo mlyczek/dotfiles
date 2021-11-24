@@ -43,8 +43,8 @@ setw -g window-status-style fg=colour138,bg=colour235,none
 setw -g window-status-format ' #I#[fg=colour237]:#[fg=colour250]#W#[fg=colour244]#F '
 
 # split nice
-bind | split-window -h
-bind - split-window -v
+bind | split-window -h -c "#{pane_current_path}"
+bind - split-window -v -c "#{pane_current_path}"
 unbind '"'
 unbind %
 
