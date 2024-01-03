@@ -166,12 +166,16 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'rodrigore/coc-tailwind-intellisense', {'do': 'npm install'}
 
 Plug 'pearofducks/ansible-vim'
 
 " Clojure
 Plug 'luochen1990/rainbow'
-Plug 'Olical/conjure', {'tag': 'v4.21.0'}
+Plug 'Olical/conjure'
+
+" Haskell
+Plug 'neovimhaskell/haskell-vim'
 
 call plug#end()
 
@@ -217,7 +221,7 @@ nnoremap <leader>fe :Files<CR>
 let g:python_highlight_all = 1
 
 """"""""""""""""""""""""""""""""""" COC """""""""""""""""""""""""""""""""""
-let g:coc_global_extensions = ['coc-json', 'coc-css', 'coc-python', 'coc-phpls']
+let g:coc_global_extensions = ['coc-json', 'coc-css', 'coc-phpls', 'coc-pyright', 'coc-tsserver']
 
 " don't give |ins-completion-menu| messages.
 set shortmess+=c
@@ -225,39 +229,64 @@ set shortmess+=c
 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
 
-" Use tab for trigger completion with characters ahead and navigate.
-" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+" Use tab for trigger completion with characters ahead and navigate
+" NOTE: There's always complete item selected by default, you may want to enable
+" no select by `"suggest.noselect": true` in your configuration file
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
       \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
-function! s:check_back_space() abort
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
+" Use <c-space> to trigger completion
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
 
 " Use K to show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <silent> K :call ShowDocumentation()<CR>
 
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
   else
-    call CocAction('doHover')
+    call feedkeys('K', 'in')
   endif
 endfunction
 
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
+" Formatting selected code
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
 nmap <silent> <C-b> <Plug>(coc-definition)
 nmap <silent> <M-F7> <Plug>(coc-references)
+nmap <S-F6> <Plug>(coc-rename)
 
+" Remap keys for apply code actions at the cursor position.
+nmap <M-CR> <Plug>(coc-codeaction-cursor)
+" Apply the most preferred quickfix action to fix diagnostic on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+" Remap keys for apply refactor code actions.
+nmap <silent> <leader>re <Plug>(coc-codeaction-refactor)
+" Run the Code Lens action on the current line.
+nmap <leader>cl  <Plug>(coc-codelens-action)
 
 """""""" Colorscheme """"""""
 set termguicolors
