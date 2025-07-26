@@ -205,7 +205,14 @@ require("lazy").setup({
 
     'tpope/vim-fugitive',
 
-    'airblade/vim-gitgutter',
+    -- 'airblade/vim-gitgutter',
+
+    {
+        'lewis6991/gitsigns.nvim',
+        config = function()
+            require('gitsigns').setup()
+        end
+    },
 
     {
         "nvim-treesitter/nvim-treesitter",
@@ -215,6 +222,32 @@ require("lazy").setup({
                 highlight = { enable = true }
             }
         end
+    },
+
+    'nvim-lua/plenary.nvim',
+
+    {
+        'nvim-telescope/telescope.nvim',
+        tag = '0.1.6',
+        dependencies = { 'nvim-lua/plenary.nvim' },
+        config = function()
+            require('telescope').setup{}
+
+            local builtin = require('telescope.builtin')
+            keymap('n', '<leader>fe', builtin.find_files, {})
+            keymap('n', '<leader>fb', builtin.buffers, {})
+            keymap('n', '<leader>ff', builtin.live_grep, {})
+            keymap('n', '<leader>gs', builtin.git_status, {})
+        end
+    },
+
+    {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        build = "make",
+        enabled = vim.fn.executable("make") == 1,
+        config = function()
+            require("telescope").load_extension("fzf")
+        end,
     },
 
     {
@@ -255,6 +288,11 @@ require("lazy").setup({
                 end
             end
             keymap("n", "K", '<CMD>lua _G.show_docs()<CR>', {silent = true})
+
+            keymap('n', '<C-b>', '<Plug>(coc-definition)', {silent = true})
+            keymap('n', '<M-F7>', '<Plug>(coc-references)', {silent = true})
+            keymap('n', '<S-F6>', '<Plug>(coc-rename)')
+            keymap('n', '<M-CR>', '<Plug>(coc-codeaction-cursor)')
         end
     }
 })
