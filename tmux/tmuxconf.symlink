@@ -1,5 +1,9 @@
-set -g  default-terminal            "screen-256color"
-set -ga terminal-overrides          ",xterm-256color:Tc"
+# set -g  default-terminal            "screen-256color"
+# set -ga terminal-overrides          ",xterm-256color:Tc"
+# set -sa terminal-features           ',xterm-kitty:RGB'
+
+set -g  default-terminal            "tmux-256color"
+set -ga terminal-features           ',*:RGB'
 
 # for neovim ESC to work without delay
 set -g  escape-time                 10
@@ -50,3 +54,10 @@ unbind %
 
 # reload configuration
 bind r source-file ~/.tmux.conf \; display '.tmux.conf reloaded'
+
+set -g @plugin 'tmux-plugins/tpm'
+# set -g @plugin 'catppuccin/tmux'
+# set -g @plugin "janoamaral/tokyo-night-tmux"
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run '~/.tmux/plugins/tpm/tpm'
