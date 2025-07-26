@@ -1,5 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
   export ZSH=/home/mlyczek/.oh-my-zsh
@@ -97,6 +98,7 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias nvim09='NVIM_APPNAME=nvim-09 nvim-0.9.4'
+alias nvim10='NVIM_APPNAME=nvim-10 nvim-0.10.2'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
