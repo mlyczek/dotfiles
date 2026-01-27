@@ -2,7 +2,7 @@
     "layer": "top",
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["hyprland/window"],
-    "modules-right": ["backlight", "power-profiles-daemon", "battery", "tray", "clock", "custom/power"],
+    "modules-right": ["network", "group/group-energy", "wireplumber", "tray", "clock", "custom/power"],
     "hyprland/window": {
         "max-length": 50
     },
@@ -30,6 +30,19 @@
         "format": "{percent}% {icon}",
         "format-icons": ["", "", "", "", "", "", "", "", ""]
     },
+    "group/group-energy": {
+	    "orientation": "inherit",
+	    "modules": [
+		    "battery",
+		    "backlight",
+		    "power-profiles-daemon"
+	    ],
+	    "drawer": {
+		    "transition-duration": 500,
+		    // "children-class": "not-power",
+		    "transition-left-to-right": false
+	    }
+    },
     "custom/power": {
 	
 	"format" : " ⏻ ",
@@ -41,5 +54,23 @@
 		"reboot": "systemctl reboot",
 		"suspend": "systemctl suspend"
 	    }
+    },
+    "network": {
+	    // "interface": "wlp4s0",
+	    "format": "{ifname}",
+	    "format-wifi": "{essid} ({signalStrength}%) ",
+	    "format-ethernet": "{ipaddr}/{cidr} 󰊗",
+	    "format-disconnected": "", //An empty format will hide the module.
+	    "tooltip-format": "{ifname} via {gwaddr} 󰊗",
+	    "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+	    "tooltip-format-ethernet": "{ifname} ",
+	    "tooltip-format-disconnected": "Disconnected",
+	    "max-length": 50
+    },
+    "wireplumber": {
+	    "format": "{volume}% {icon}",
+	    "format-muted": "",
+	    "on-click": "kitty wiremix",
+	    "format-icons": ["", "", ""]
     }
 }
