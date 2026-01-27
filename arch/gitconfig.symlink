@@ -1,0 +1,47 @@
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	ui = true
+[alias]
+	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+	mylog = log --pretty=format:\"%C(auto)%h%Creset %ad | %C(cyan)%s%C(auto)%d%Creset [%an]\" --date=short
+	ch-files = diff --name-status
+    last = mylog -10
+[core]
+	editor = nvim
+[push]
+	default = simple
+[diff]
+    tool = nvimdiff
+    compactionHeuristic = true
+[difftool]
+	prompt = false
+[difftool "nvimdiff"]
+    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+[merge]
+    tool = vimdiff3
+    conflictstyle = diff3
+[mergetool]
+    prompt = true
+	keepBackup = false
+[mergetool "vimdiff3"]
+    path = nvim
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	meta = 227
+	frag = magenta bold
+	commit = 227 bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+[pull]
+	rebase = false
+[init]
+	defaultBranch = master
+[include]
+	path = /home/mlyczek/.gitconfig-user

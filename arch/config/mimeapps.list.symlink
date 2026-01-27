@@ -1,0 +1,12 @@
+[Added Associations]
+image/jpeg=gwenview.desktop;
+application/vnd.openxmlformats-officedocument.wordprocessingml.document=onlyoffice-desktopeditors.desktop;
+image/png=oculante.desktop;
+application/pdf=okularApplication_pdf.desktop;
+
+[Default Applications]
+image/jpeg=gwenview.desktop;
+application/vnd.openxmlformats-officedocument.wordprocessingml.document=onlyoffice-desktopeditors.desktop
+image/png=oculante.desktop
+inode/directory=org.kde.dolphin.desktop;org.gnome.Nautilus.desktop;
+application/pdf=okularApplication_pdf.desktop
