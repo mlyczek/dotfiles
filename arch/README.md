@@ -41,3 +41,18 @@ $ XDG_MENU_PREFIX=arch- kbuildsycoca6
 
 It may be required to rename `/etx/xdg/menus/arch-applications.menu` to `/etc/xdg/menus/applications.menu`.
 Source: https://github.com/prasanthrangan/hyprdots/issues/1406
+
+## NPM installing global packages
+
+Source: https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally
+
+Instead of installing global packages into `/usr/local` directory and require `sudo` to do so, we can
+configure NPM to install them into `~/.local` instead.
+
+This requires to run:
+
+```bash
+npm config set prefix '~/.local'
+```
+
+And then making sure that `~/.local/bin` is added to PATH
