@@ -1,0 +1,8 @@
+# Colors
+include=~/.config/mako/colors-catppuccin-frappe-teal.config
+
+border-radius=5
+
+# 10s
+default-timeout=10000
+
