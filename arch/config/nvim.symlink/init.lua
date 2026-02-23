@@ -127,6 +127,16 @@ autocmd('Filetype', {
     end
 })
 
+autocmd('BufWritePost', {
+    group = augroup('WaybarGroup', { clear = true }),
+    pattern = { '*/waybar*/style.css', '*/waybar*/config.jsonc' },
+    callback = function ()
+        vim.fn.jobstart({"reload-waybar.sh"}, {
+            detach = true
+        })
+    end
+})
+
 vim.keymap.set('n', '<Leader><space>', ':noh<cr>', { desc = 'Clear Highlight' })
 
 -- close all
