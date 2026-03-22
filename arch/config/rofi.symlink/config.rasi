@@ -1,0 +1,6 @@
+@theme "catppuccin-default"
+
+configuration {
+    show-icons: true;
+    font: "Liberation Sans 12";
+}
