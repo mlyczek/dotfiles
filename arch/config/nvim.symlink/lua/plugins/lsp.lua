@@ -76,6 +76,7 @@ return {
             vim.lsp.enable('bashls')
             vim.lsp.enable('somesass_ls')
             vim.lsp.enable('astro')
+            vim.lsp.enable('jsonls')
 
             -- Special Lua Config, as recommended by neovim help docs
             vim.lsp.config('lua_ls', {
