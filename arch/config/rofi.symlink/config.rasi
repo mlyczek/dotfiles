@@ -4,3 +4,17 @@ configuration {
     show-icons: true;
     font: "Liberation Sans 12";
 }
+
+window {
+    border-radius: 10px;
+    border: 2px;
+    width: 33%;
+}
+
+element {
+    padding: 10px;
+}
+
+inputbar {
+    padding: 10px;
+}
