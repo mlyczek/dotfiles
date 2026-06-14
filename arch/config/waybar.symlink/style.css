@@ -50,8 +50,27 @@ window#waybar {
 #wireplumber,
 #battery,
 #backlight,
+#bluetooth,
 #network {
     margin-right:10px;
+}
+
+#battery.critical {
+    background-color: @red;
+    color: @base;
+    border-radius: 5px;
+    padding: 0 7px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+#battery.warning {
+    background-color: @yellow;
+    color: @base;
+    border-radius: 5px;
+    padding: 0 7px;
+    margin-top: 2px;
+    margin-bottom: 2px;
 }
 
 #tray {

@@ -2,7 +2,7 @@
     "layer": "top",
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["hyprland/window"],
-    "modules-right": ["network", "group/group-energy", "wireplumber", "tray", "clock", "custom/power"],
+    "modules-right": ["bluetooth", "network", "group/group-energy", "wireplumber", "tray", "clock", "custom/power"],
 
     "hyprland/workspaces": {
     },
@@ -17,10 +17,17 @@
             "critical": 15
         },
         "format": "{icon} {capacity}%",
-        "format-full": "{icon} {capacity}%",
-        "format-charging": "󰚥 {capacity}%",
+        // "format-full": "{icon} {capacity}%",
+        // "format-charging": "󰚥 {capacity}%",
         "format-alt": "{time} {icon}",
-        "format-icons": ["󰂎", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+        // "format-icons": ["󰂎", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+
+        "format-plugged": "",
+        "format-icons": {
+            "charging": ["󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"],
+            "default": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+        },
+        "format-full": "󰂅"
     },
     "clock": {
         "format": "{0:%d %b}, {0:%H:%M}",
@@ -58,20 +65,38 @@
     "network": {
         // "interface": "wlp4s0",
         "format": "{ifname}",
-        "format-wifi": " {essid} ({signalStrength}%)", // nf-fa-wifi
+        "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+        // "format-wifi": " {essid} ({signalStrength}%)", // nf-fa-wifi
+        "format-wifi": "{icon} {essid} ({signalStrength}%)", // nf-fa-wifi
         "format-ethernet": "{ipaddr}/{cidr} 󰊗",
-        "format-disconnected": "", //An empty format will hide the module.
+        "format-disconnected": "󰤮",
         "tooltip-format": "{ifname} via {gwaddr} 󰊗",
         // "tooltip-format-wifi": " {essid} ({signalStrength}%)", // nf-fa-wifi
         "tooltip-format-ethernet": "{ifname} ",
         "tooltip-format-disconnected": "Disconnected",
         "max-length": 50
     },
+    "bluetooth": {
+        "format": "",
+        "format-off": "󰂲",
+        "format-disabled": "󰂲",
+        "format-connected": "󰂱",
+        "format-no-controller": "",
+        "tooltip-format": "Devices connected: {num_connections}",
+        "on-click": "blueman-manager"
+    },
     "wireplumber": {
         "format": "{icon} {volume}%",
         "format-muted": "",
         "on-click": "kitty wiremix",
-        "format-icons": ["", "", ""]
+        "format-icons": {
+            "headphone": "",
+            "headset": "",
+            "default": ["", "", ""]
+        }
+    },
+    "tray": {
+        "spacing": 3
     }
 
 }
