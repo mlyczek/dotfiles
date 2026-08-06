@@ -424,6 +424,17 @@ hl.window_rule({
 })
 
 hl.window_rule({
+    name = "gnome-calculator",
+
+    match = {
+        class = "org.gnome.Calculator"
+    },
+
+    float = true
+})
+
+
+hl.window_rule({
     name = "gimp-print",
 
     match = {
