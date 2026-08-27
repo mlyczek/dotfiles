@@ -272,21 +272,27 @@ hl.device({
 ---------------------
 ---- KEYBINDINGS ----
 ---------------------
+-- see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
 
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 
--- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
-hl.bind(mainMod .. " + T", hl.dsp.exec_cmd(terminal))
-hl.bind(mainMod .. " + Q", hl.dsp.window.close())
+-- basic Hyprland window management
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
-hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
+hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }))
 hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }))
 
+hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(menu))
+
 -- Screenshot
 hl.bind("Print", hl.dsp.exec_cmd('grim -g "$(slurp)" - | wl-copy'))
+
+-- application shortcuts
+hl.bind(mainMod .. " + T", hl.dsp.exec_cmd(terminal))
+hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
+hl.bind(mainMod .. " + ALT + RETURN", hl.dsp.exec_cmd("vivaldi-stable"))
+hl.bind(mainMod .. " + ALT + K", hl.dsp.exec_cmd("keepassxc"))
 
 -- lock screen
 hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("hyprlock"))
