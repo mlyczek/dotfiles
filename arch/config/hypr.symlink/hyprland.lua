@@ -57,6 +57,7 @@ hl.on("hyprland.start", function ()
     hl.exec_cmd("solaar --window hide")
     hl.exec_cmd("hypridle")
     hl.exec_cmd("dropbox")
+    hl.exec_cmd("xsettingsd") -- used by X11 applications, contains settings which enable font anti aliasing, etc.
 end)
 
 -------------------------------
@@ -148,6 +149,10 @@ hl.config({
     animations = {
         enabled = true,
     },
+
+    xwayland = {
+        force_zero_scaling = true
+    }
 })
 
 -- Default curves and animations, see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Animations/
