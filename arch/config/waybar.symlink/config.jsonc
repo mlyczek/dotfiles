@@ -5,6 +5,7 @@
     "modules-right": ["bluetooth", "network", "group/group-energy", "wireplumber", "tray", "clock", "custom/power"],
 
     "hyprland/workspaces": {
+        "format": "{id}"
     },
     "hyprland/window": {
         "max-length": 50,
