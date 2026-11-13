@@ -18,6 +18,14 @@ hl.monitor({
 })
 
 hl.monitor({
+    output   = "HDMI-A-1",
+    mode     = "1920x1080",
+    position = "auto",
+    scale    = 1,
+    mirror   = "desc:BOE 0x08DF"
+})
+
+hl.monitor({
     output   = "",
     mode     = "preferred",
     position = "auto",
@@ -298,6 +306,11 @@ hl.bind(mainMod .. " + T", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + ALT + RETURN", hl.dsp.exec_cmd("vivaldi-stable"))
 hl.bind(mainMod .. " + ALT + K", hl.dsp.exec_cmd("keepassxc"))
+hl.bind(mainMod .. " + ALT + O", hl.dsp.exec_cmd("obsidian"))
+hl.bind("XF86Launch6", hl.dsp.exec_cmd("gnome-calculator")) -- square on Keychron V6 Max
+
+-- emoji
+hl.bind(mainMod .. " + MINUS", hl.dsp.exec_cmd("rofi -modi emoji -show emoji"))
 
 -- lock screen
 hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("hyprlock"))
