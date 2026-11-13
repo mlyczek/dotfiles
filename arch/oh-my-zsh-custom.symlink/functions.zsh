@@ -14,10 +14,10 @@ function ai() {
   local editor_pane="${TMUX_PANE}"
   local ai_pane
 
-  # Right split (30% width) for the AI agent harness.
+  # Right split (40% width) for the AI agent harness.
   # The harness is sent to a normal shell so the pane returns to a prompt
   # when the harness exits, making it easy to restart manually.
-  ai_pane=$(tmux split-window -h -p 30 -d -P -F '#{pane_id}' -t "${editor_pane}")
+  ai_pane=$(tmux split-window -h -p 40 -d -P -F '#{pane_id}' -t "${editor_pane}")
   tmux send-keys -t "${ai_pane}" "${harness}" C-m
 
   # Bottom split (15% height) under the editor for a terminal
