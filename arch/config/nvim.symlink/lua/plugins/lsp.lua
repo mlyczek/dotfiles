@@ -11,6 +11,12 @@ return {
     },
 
     {
+        'folke/lazydev.nvim',
+        ft = 'lua',
+        opts = {}
+    },
+
+    {
         'neovim/nvim-lspconfig',
         dependencies = {
             'j-hui/fidget.nvim',
@@ -71,12 +77,10 @@ return {
                 end
             })
 
-            -- vim.lsp.enable('hls')
-            vim.lsp.enable('pyright')
-            vim.lsp.enable('bashls')
-            vim.lsp.enable('somesass_ls')
-            vim.lsp.enable('astro')
-            vim.lsp.enable('jsonls')
+            -- Quickshell Language Server (binary is named qmlls6 on Arch)
+            vim.lsp.config('qmlls', {
+                cmd = { 'qmlls6' }
+            })
 
             -- Special Lua Config, as recommended by neovim help docs
             vim.lsp.config('lua_ls', {
@@ -93,9 +97,6 @@ return {
                         },
                         workspace = {
                             checkThirdParty = false,
-                            -- NOTE: this is a lot slower and will cause issues when working on your own configuration.
-                            --  See https://github.com/neovim/nvim-lspconfig/issues/3189
-                            library = vim.api.nvim_get_runtime_file('', true),
                         },
                     })
                 end,
@@ -103,7 +104,40 @@ return {
                     Lua = {},
                 },
             })
-            vim.lsp.enable('lua_ls')
+
+            -- Servers are listed by name only; the binary comes from nvim-lspconfig's config.
+            -- Overrides (qmlls, lua_ls) must be defined above so the check sees the final cmd.
+            -- Arch packages:
+            --   pyright                      -> pyright
+            --   bashls                       -> bash-language-server
+            --   somesass_ls                  -> some-sass-language-server (npm/AUR)
+            --   astro                        -> astro-language-server (npm/AUR)
+            --   jsonls, html, cssls          -> vscode-langservers-extracted
+            --   gopls                        -> gopls
+            --   qmlls                        -> qt6-declarative (provides qmlls6)
+            --   lua_ls                       -> lua-language-server
+            --   yamlls                       -> yaml-language-server
+            --   hls                          -> haskell-language-server
+            local servers = {
+                'pyright', 'bashls', 'somesass_ls', 'astro', 'jsonls', 'gopls',
+                'qmlls', 'lua_ls', 'html', 'cssls', 'yamlls',
+                -- 'hls',
+            }
+
+            local missing = {}
+            for _, name in ipairs(servers) do
+                local cmd = vim.lsp.config[name].cmd
+                -- cmd can be a function (custom launcher); it can't be inspected, so trust it.
+                if type(cmd) == 'function' or (type(cmd) == 'table' and vim.fn.executable(cmd[1]) == 1) then
+                    vim.lsp.enable(name)
+                else
+                    table.insert(missing, name .. (type(cmd) == 'table' and (' (' .. cmd[1] .. ')') or ''))
+                end
+            end
+
+            if #missing > 0 then
+                vim.notify('LSP servers not installed, skipped: ' .. table.concat(missing, ', '), vim.log.levels.WARN)
+            end
         end
     }
 }
