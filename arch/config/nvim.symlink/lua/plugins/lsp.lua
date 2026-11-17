@@ -105,6 +105,15 @@ return {
                 },
             })
 
+            -- gopls attaches to gotmpl by default, but it knows nothing about Hugo and returns
+            -- bogus documentHighlight ranges there. Keep it on Go files only.
+            -- So we are taking the default file types configured for the server and remove gotmpl
+            vim.lsp.config('gopls', {
+                filetypes = vim.tbl_filter(function(ft)
+                    return ft ~= 'gotmpl'
+                end, vim.lsp.config.gopls.filetypes),
+            })
+
             -- Servers are listed by name only; the binary comes from nvim-lspconfig's config.
             -- Overrides (qmlls, lua_ls) must be defined above so the check sees the final cmd.
             -- Arch packages:

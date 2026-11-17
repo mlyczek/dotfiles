@@ -167,4 +167,14 @@ vim.keymap.set('t', '<C-j>', '<C-\\><C-N><C-w>j')
 vim.keymap.set('t', '<C-k>', '<C-\\><C-N><C-w>k')
 vim.keymap.set('t', '<C-l>', '<C-\\><C-N><C-w>l')
 
+-- Hugo templates: any .html/.htm under a `layouts/` directory (site root, themes/*/layouts,
+-- modules). Uncomment the extra lines if you use Hugo's other output formats.
+vim.filetype.add({
+    pattern = {
+        [".*/layouts/.*%.html?"] = "gotmpl",
+        -- [".*/layouts/.*%.xml"] = "gotmpl",
+        -- [".*/layouts/.*%.json"] = "gotmpl",
+    }
+})
+
 require('config.lazy')
