@@ -48,7 +48,8 @@ return {
             vim.keymap.set('n', '<leader>fc', builtin.current_buffer_fuzzy_find, { desc = 'Find in current buffer' })
             vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Find NeoVim help' })
             vim.keymap.set('n', '<leader>fm', builtin.man_pages, { desc = 'Find man pages' })
-            vim.keymap.set('n', '<leader>fo', builtin.oldfiles, { desc = 'Find previous open files' })
+            vim.keymap.set('n', '<leader>fe', builtin.diagnostics, { desc = 'Find diagnostics' })
+            vim.keymap.set('n', '<leader><F12>', builtin.oldfiles, { desc = 'Find previous open files' })
 
             -- git related mappings
             vim.keymap.set('n', '<leader>gs', builtin.git_status, { desc = 'Git status' })

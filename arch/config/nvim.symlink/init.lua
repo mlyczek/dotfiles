@@ -167,6 +167,15 @@ vim.keymap.set('t', '<C-j>', '<C-\\><C-N><C-w>j')
 vim.keymap.set('t', '<C-k>', '<C-\\><C-N><C-w>k')
 vim.keymap.set('t', '<C-l>', '<C-\\><C-N><C-w>l')
 
+-- diagnostics
+vim.diagnostic.config({
+    severity_sort = true,
+    virtual_text = false,
+    virtual_lines = true,
+    float = { border = 'rounded' },
+})
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Diagnostic float' })
+
 -- Hugo templates: any .html/.htm under a `layouts/` directory (site root, themes/*/layouts,
 -- modules). Uncomment the extra lines if you use Hugo's other output formats.
 vim.filetype.add({
