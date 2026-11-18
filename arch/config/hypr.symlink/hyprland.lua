@@ -457,6 +457,15 @@ hl.window_rule({
     float = true
 })
 
+hl.window_rule({
+    name = "keepassxc",
+
+    match = {
+        class = "org.keepassxc.KeePassXC"
+    },
+
+    float = true
+})
 
 hl.window_rule({
     name = "gimp-print",
